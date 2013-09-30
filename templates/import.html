@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Import</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/static/js/html5shiv.js"></script>
+      <script src="/static/js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        body{
+            background-color: #398439;
+        }
+        .container{
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="row">
+<div class="col-lg-6">
+<form action="/import" method="get">
+    <table class="table-bordered">
+    <thead>
+        <th>Select import file</th>
+    </thead>
+    <tbody>
+        {% for file in file_list %}
+            <tr>
+                <td>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optionsRadios" id="{{ file }}" value="{{ file }}">
+                            {{ file }}
+                        </label>
+                    </div>
+                    </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+</div>
+<ul>
+{% for row in rows %}
+   <li> {{ row }}</li>
+{% endfor %}
+</ul>
+</div>
+</div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/static/js/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/static/js/bootstrap.min.js"></script>
+
+</body>
+</html>
