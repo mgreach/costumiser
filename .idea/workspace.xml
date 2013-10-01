@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03183049-511f-4378-8270-8f9aa58ec24c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="costumes.iws" />
@@ -73,7 +74,7 @@
       <file leaf-file-name="category.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/category.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="119" column="28" selection-start="3775" selection-end="3785" vertical-scroll-proportion="-5.3333335" vertical-offset="1998" max-vertical-offset="3798">
+            <state line="187" column="5" selection-start="6387" selection-end="6444" vertical-scroll-proportion="-17.518518" vertical-offset="2893" max-vertical-offset="3798">
               <folding />
             </state>
           </provider>
@@ -82,7 +83,7 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="9" selection-start="1174" selection-end="1174" vertical-scroll-proportion="0.33842537" vertical-offset="360" max-vertical-offset="4464">
+            <state line="233" column="57" selection-start="7987" selection-end="7987" vertical-scroll-proportion="0.74618095" vertical-offset="3559" max-vertical-offset="4482">
               <folding />
             </state>
           </provider>
@@ -430,7 +431,11 @@
       <created>1380657280161</created>
       <updated>1380657280161</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="css edit">
+      <created>1380657293214</created>
+      <updated>1380657293214</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -573,14 +578,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/category.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="119" column="28" selection-start="3775" selection-end="3785" vertical-scroll-proportion="-5.3333335" vertical-offset="1998" max-vertical-offset="3798">
+        <state line="187" column="5" selection-start="6387" selection-end="6444" vertical-scroll-proportion="-17.518518" vertical-offset="2893" max-vertical-offset="3798">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="9" selection-start="1174" selection-end="1174" vertical-scroll-proportion="0.33842537" vertical-offset="360" max-vertical-offset="4464">
+        <state line="233" column="57" selection-start="7987" selection-end="7987" vertical-scroll-proportion="0.74618095" vertical-offset="3559" max-vertical-offset="4482">
           <folding />
         </state>
       </provider>
