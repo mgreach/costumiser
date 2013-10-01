@@ -5445,21 +5445,21 @@ a.list-group-item:focus {
   border-bottom-color: #dddddd;
 }
 
-.panel-primary {
+.panel-info {
   border-color: #428bca;
 }
 
-.panel-primary > .panel-heading {
+.panel-info > .panel-heading {
   color: #ffffff;
   background-color: #428bca;
   border-color: #428bca;
 }
 
-.panel-primary > .panel-heading + .panel-collapse .panel-body {
+.panel-info > .panel-heading + .panel-collapse .panel-body {
   border-top-color: #428bca;
 }
 
-.panel-primary > .panel-footer + .panel-collapse .panel-body {
+.panel-info > .panel-footer + .panel-collapse .panel-body {
   border-bottom-color: #428bca;
 }
 
