@@ -13,9 +13,11 @@ def index(request):
     teen = Product.objects.filter(ADVERTISERCATEGORY='Teen Costumes')[:4]
     baby = Product.objects.filter(ADVERTISERCATEGORY='Baby Toddler Costumes')[:4]
     pet = Product.objects.filter(ADVERTISERCATEGORY='Pet Costumes')[:4]
+    accessories = Product.objects.filter(ADVERTISERCATEGORY='Costume Accessories')[:4]
     decor = Product.objects.filter(ADVERTISERCATEGORY='Decor Party Supplies')[:4]
     result = Product.objects.all()[:100]
-    context = {'items': result, 'adult': adult, 'kids': kids, 'teen': teen, 'baby': baby, 'pet': pet, 'decor': decor}
+    context = {'items': result, 'adult': adult, 'kids': kids, 'teen': teen, 'baby': baby, 'pet': pet, 'decor': decor,
+               'accessories': accessories}
     return render_to_response('index.html', context, context_instance=RequestContext(request))
 
 
