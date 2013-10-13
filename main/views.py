@@ -87,3 +87,9 @@ def zero_if_empty(value):
     if value == '':
         return '0'
     return value
+
+
+def item(request, id):
+    product = Product.objects.get(pk=id)
+    context = {'product': product}
+    return render_to_response('item.html', context, context_instance=RequestContext(request))

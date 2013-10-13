@@ -18,4 +18,5 @@ urlpatterns = patterns('',
     url(r'^import/', 'main.views.import_req'),
     url(r'^$', 'main.views.index'),
     url('^cat/(?P<cat_id>(.*))/(?P<page>(.*))/', 'main.views.category'),
+    url('^id/(?P<id>(.*))/', 'main.views.item'),
 )
