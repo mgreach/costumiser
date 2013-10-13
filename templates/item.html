@@ -14,122 +14,171 @@
       <script src="/static/js/respond.min.js"></script>
     <![endif]-->
     <style>
-        body{
+        body {
             background-color: #eea236;
             background-image: url(/static/img/sandpaper.png);
         }
-        .container{
+
+        .container {
             background-color: #ffffff;
         }
-        .search-box{
+
+        .search-box {
             margin-left: auto;
             margin-right: auto;
             width: 50%;
             margin-bottom: 20px;
         }
-        .product-thumb:hover{
-           /*background-color: #e1edf7;*/
+
+        .product-thumb:hover {
+            /*background-color: #e1edf7;*/
             border: 1px solid #f2a328;
         }
 
-        .logo{
+        .logo {
             padding: 10px;
         }
+
         .panel-info {
             background-color: #ffffff;
         }
-        .container{
+
+        .container {
             background-color: rgba(93, 93, 93, 0.24);
         }
-        .product-row{
+
+        .product-row {
             padding: 5px 5px 0 5px;
         }
-        .col-sm-6, .col-md-3, .col-lg-3{
+
+        .col-sm-6, .col-md-3, .col-lg-3 {
             padding-bottom: 5px;
         }
-        .breadcrumb{
+
+        .breadcrumb {
             margin-bottom: 5px;
         }
-        .name{
+
+        .name {
             color: #f2a328;
+        }
+
+        .price {
+            color: #2dcc07;
+        }
+
+        .tag {
+            background-color: #f0f4d1;
+        }
+        .share{
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
 <div class="container">
-<nav class="navbar navbar-inverse" role="navigation">
-  <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand logo" href="/"><img src="/static/img/logo.png"></a>
-  </div>
+    <nav class="navbar navbar-inverse" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand logo" href="/"><img src="/static/img/logo.png"></a>
+        </div>
 
-  <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse navbar-ex1-collapse">
-    <ul class="nav navbar-nav">
-      <li><a href="/cat/Adult_Costumes/1/">Adult Costumes</a></li>
-      <li><a href="/cat/Teen_Costumes/1/">Teen Costumes</a></li>
-      <li><a href="/cat/Kids_Costumes/1/">Kids Costumes</a></li>
-      <li><a href="/cat/Baby_Toddler_Costumes/1/">Baby Toddler Costumes</a></li>
-      <li><a href="/cat/Pet_Costumes/1/">Pet Costumes</a></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Decor Party Supplies <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li><a href="#">Separated link</a></li>
-          <li><a href="#">One more separated link</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div><!-- /.navbar-collapse -->
-</nav>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/cat/Adult_Costumes/1/">Adult Costumes</a></li>
+                <li><a href="/cat/Teen_Costumes/1/">Teen Costumes</a></li>
+                <li><a href="/cat/Kids_Costumes/1/">Kids Costumes</a></li>
+                <li><a href="/cat/Baby_Toddler_Costumes/1/">Baby Toddler Costumes</a></li>
+                <li><a href="/cat/Pet_Costumes/1/">Pet Costumes</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Decor Party Supplies <b
+                            class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </nav>
 
-<div class="row">
-    <div class="search-box">
-  <div class="col-lg-12">
-    <div class="input-group">
-      <input  type="text" class="form-control">
+    <div class="row">
+        <div class="search-box">
+            <div class="col-lg-12">
+                <div class="input-group">
+                    <input type="text" class="form-control">
       <span class="input-group-btn">
         <button class="btn btn-primary" type="button">Search</button>
       </span>
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
-  </div>
-</div><!-- /.row -->
-
-<ol class="breadcrumb">
-  <li><a href="/">Home</a></li>
-  <li><a href="/cat/{{ category }}/1">{{ product.ADVERTISERCATEGORY }}</a></li>
-  <li class="active">{{ product.NAME }}</li>
-</ol>
-
-<div class="panel panel-info">
-<div class="panel-heading"><a href="/cat/{{ category }}/1">{{ product.ADVERTISERCATEGORY }} <span class="glyphicon glyphicon-chevron-right"></span></a></div>
-<div class="row product-row">
-        <div class="col-sm-12 col-md-6 col-lg-6">
-
-        <div class="thumbnail product-thumb">
-    <a href="/get/{{ product.pk }}">
-      <img id="img_zoom" src="{{ product.IMAGEURL }}" alt="{{ product.NAME }}" class="img-responsive" data-zoom-image="{{ product.IMAGEURL }}">
-    </a>
-          </div>
+                </div>
+                <!-- /input-group -->
+            </div>
+            <!-- /.col-lg-6 -->
         </div>
-    <div class="col-sm-12 col-md-6 col-lg-6">
-        <h2 class="name">{{ product.NAME }}</h2>
-        <h4><strong>Description:</strong></h4>
-        <p>{{ product.DESCRIPTION }}</p>
+    </div>
+    <!-- /.row -->
+
+    <ol class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/cat/{{ category }}/1">{{ product.ADVERTISERCATEGORY }}</a></li>
+        <li class="active">{{ product.NAME }}</li>
+    </ol>
+
+    <div class="panel panel-info">
+        <div class="panel-heading"><a href="/cat/{{ category }}/1">{{ product.ADVERTISERCATEGORY }} <span
+                class="glyphicon glyphicon-chevron-right"></span></a></div>
+        <div class="row product-row">
+            <div class="col-sm-12 col-md-6 col-lg-6">
+
+                <div class="thumbnail product-thumb">
+                    <a href="/get/{{ product.pk }}">
+                        <img id="img_zoom" src="{{ product.IMAGEURL }}" alt="{{ product.NAME }}" class="img-responsive"
+                             data-zoom-image="{{ product.IMAGEURL }}">
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6">
+                <h2 class="name">{{ product.NAME }}</h2>
+                <h4><strong>Description:</strong></h4>
+
+                <p>{{ product.DESCRIPTION }}</p>
+                <h4 class="price"><strong>Price: ${{ product.PRICE }}</strong></h4>
+                <a href="/get/{{ product.pk }}" class="btn btn-primary btn-lg">Where to buy</a>
+                <h4><strong>Tags:</strong></h4>
+                {% for tag in tags %}
+                    <a class='tag' href="/serch/{{ tag }}">{{ tag }}</a>
+                {% endfor %}
+                <div class="share">
+                    <!-- AddThis Button BEGIN -->
+                    <div class="addthis_toolbox addthis_default_style ">
+                        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                        <a class="addthis_button_tweet"></a>
+                        <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+                        <a class="addthis_counter addthis_pill_style"></a>
+                    </div>
+                    <script type="text/javascript">var addthis_config = {"data_track_addressbar": true};</script>
+                    <script type="text/javascript"
+                            src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4dbd98d77f51bee4"></script>
+                    <!-- AddThis Button END -->
+                </div>
+            </div>
         </div>
-</div></div>
+    </div>
 
 
-</div></div>
+</div>
+</div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="/static/js/jquery.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -137,8 +186,8 @@
 <script src="/static/js/jquery.ui.totop.js"></script>
 <script src="/static/js/jquery.elevateZoom-3.0.3.min.js"></script>
 <script>
-    $(function() {
-    $("#img_zoom").elevateZoom();
+    $(function () {
+        $("#img_zoom").elevateZoom();
     });
 </script>
 </body>

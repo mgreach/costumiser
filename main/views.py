@@ -110,7 +110,8 @@ def item(request, id):
     product = Product.objects.get(pk=id)
     product.IMAGEURL = product.IMAGEURL.replace('250', '1000')
     product.NAME = rotate_name(product.NAME)
-    context = {'product': product, 'category': product.ADVERTISERCATEGORY.replace(' ', '_')}
+    tags = set(product.KEYWORDS.split(','))
+    context = {'product': product, 'category': product.ADVERTISERCATEGORY.replace(' ', '_'), 'tags': tags}
     return render_to_response('item.html', context, context_instance=RequestContext(request))
 
 
