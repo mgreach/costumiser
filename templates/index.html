@@ -50,6 +50,12 @@
         .breadcrumb{
             margin-bottom: 5px;
         }
+        .product_name {
+            white-space: nowrap;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
     </style>
 </head>
 <body>
@@ -116,7 +122,7 @@
     </a>
         <div class="caption">
             <a href="/id/{{ item.pk }}">
-        <p>{{ item.NAME }}</p>
+        <p class="product_name">{{ item.NAME }}</p>
                 </a>
          <p>${{ item.PRICE }}</p>
       </div>
@@ -136,7 +142,7 @@
     </a>
         <div class="caption">
             <a href="/id/{{ item.pk }}">
-        <p>{{ item.NAME }}</p>
+        <p class="product_name">{{ item.NAME }}</p>
                 </a>
          <p>${{ item.PRICE }}</p>
       </div>
@@ -156,7 +162,7 @@
     </a>
         <div class="caption">
             <a href="/id/{{ item.pk }}">
-        <p>{{ item.NAME }}</p>
+        <p class="product_name">{{ item.NAME }}</p>
                 </a>
          <p>${{ item.PRICE }}</p>
       </div>
@@ -176,7 +182,7 @@
     </a>
         <div class="caption">
             <a href="/id/{{ item.pk }}">
-        <p>{{ item.NAME }}</p>
+        <p class="product_name">{{ item.NAME }}</p>
                 </a>
          <p>${{ item.PRICE }}</p>
       </div>
@@ -196,7 +202,7 @@
     </a>
         <div class="caption">
             <a href="/id/{{ item.pk }}">
-        <p>{{ item.NAME }}</p>
+        <p class="product_name">{{ item.NAME }}</p>
                 </a>
          <p>${{ item.PRICE }}</p>
       </div>
@@ -216,7 +222,7 @@
     </a>
         <div class="caption">
             <a href="/id/{{ item.pk }}">
-        <p>{{ item.NAME }}</p>
+        <p class="product_name">{{ item.NAME }}</p>
                 </a>
          <p>${{ item.PRICE }}</p>
       </div>
@@ -236,7 +242,7 @@
     </a>
         <div class="caption">
             <a href="/id/{{ item.pk }}">
-        <p>{{ item.NAME }}</p>
+        <p class="product_name">{{ item.NAME }}</p>
                 </a>
          <p>${{ item.PRICE }}</p>
       </div>
@@ -251,13 +257,9 @@
 <script src="/static/js/jquery.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="/static/js/bootstrap.min.js"></script>
-<script src="/static/js/jquery.equalheights.js"></script>
 <script src="/static/js/jquery.ui.totop.js"></script>
 <script>
-$(window).load(function() {
-        // Ensure equal heights on thumbnail boxes
-        $('.thumbnail').equalHeights();
-    });
+
 </script>
 </body>
 </html>

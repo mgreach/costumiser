@@ -50,6 +50,9 @@
         .breadcrumb{
             margin-bottom: 5px;
         }
+        .name{
+            color: #f2a328;
+        }
     </style>
 </head>
 <body>
@@ -103,23 +106,25 @@
 
 <ol class="breadcrumb">
   <li><a href="/">Home</a></li>
+  <li><a href="/cat/{{ category }}/1">{{ product.ADVERTISERCATEGORY }}</a></li>
+  <li class="active">{{ product.NAME }}</li>
 </ol>
 
 <div class="panel panel-info">
-<div class="panel-heading"><a href="/cat/Adult_Costumes/1/">Adult Costumes <span class="glyphicon glyphicon-chevron-right"></span></a></div>
+<div class="panel-heading"><a href="/cat/{{ category }}/1">{{ product.ADVERTISERCATEGORY }} <span class="glyphicon glyphicon-chevron-right"></span></a></div>
 <div class="row product-row">
-        <div class="col-sm-6 col-md-3 col-lg-3">
+        <div class="col-sm-12 col-md-6 col-lg-6">
+
         <div class="thumbnail product-thumb">
-    <a href="{{ product.BUYURL }}">
-      <img src="{{ product.IMAGEURL }}" alt="{{ product.NAME }}" class="img-responsive">
+    <a href="/get/{{ product.pk }}">
+      <img id="img_zoom" src="{{ product.IMAGEURL }}" alt="{{ product.NAME }}" class="img-responsive" data-zoom-image="{{ product.IMAGEURL }}">
     </a>
-        <div class="caption">
-            <a href="{{ product.BUYURL }}">
-        <p>{{ product.NAME }}</p>
-                </a>
-         <p>${{ product.PRICE }}</p>
-      </div>
           </div>
+        </div>
+    <div class="col-sm-12 col-md-6 col-lg-6">
+        <h2 class="name">{{ product.NAME }}</h2>
+        <h4><strong>Description:</strong></h4>
+        <p>{{ product.DESCRIPTION }}</p>
         </div>
 </div></div>
 
@@ -129,12 +134,11 @@
 <script src="/static/js/jquery.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="/static/js/bootstrap.min.js"></script>
-<script src="/static/js/jquery.equalheights.js"></script>
 <script src="/static/js/jquery.ui.totop.js"></script>
+<script src="/static/js/jquery.elevateZoom-3.0.3.min.js"></script>
 <script>
-$(window).load(function() {
-        // Ensure equal heights on thumbnail boxes
-        $('.thumbnail').equalHeights();
+    $(function() {
+    $("#img_zoom").elevateZoom();
     });
 </script>
 </body>

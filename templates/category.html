@@ -13,203 +13,232 @@
       <script src="/static/js/respond.min.js"></script>
     <![endif]-->
     <style>
-        body{
+        body {
             background-color: #eea236;
             background-image: url(/static/img/sandpaper.png);
         }
-        .container{
+
+        .container {
             background-color: #ffffff;
         }
-        .search-box{
+
+        .search-box {
             margin-left: auto;
             margin-right: auto;
             width: 50%;
             margin-bottom: 20px;
         }
-        .product-thumb:hover{
-           /*background-color: #e1edf7;*/
+
+        .product-thumb:hover {
+            /*background-color: #e1edf7;*/
             border: 1px solid #f2a328;
         }
 
-        .carousel-box{
+        .carousel-box {
             margin-bottom: 20px;
         }
-        .logo{
+
+        .logo {
             padding: 10px;
         }
-        .category-link{
+
+        .category-link {
             /*color: #ffffff;*/
         }
+
         .panel-info {
             background-color: #ffffff;
         }
-        .container{
+
+        .container {
             background-color: rgba(93, 93, 93, 0.24);
         }
-        .product-row{
+
+        .product-row {
             padding: 5px 5px 0 5px;
         }
-        .col-sm-6, .col-md-3, .col-lg-3{
+
+        .col-sm-6, .col-md-3, .col-lg-3 {
             padding-bottom: 5px;
         }
-        .breadcrumb{
+
+        .breadcrumb {
             margin-bottom: 5px;
         }
 
-        .pagination{
+        .pagination {
             margin: 5px 0 0 0;
             margin-top: -7px;
         }
 
-        .scrollup{
-    width:40px;
-    height:40px;
-    opacity:0.3;
-    position:fixed;
-    bottom:50px;
-    right:100px;
-    display:none;
-    text-indent:-9999px;
-    background: url('/static/img/icon_top.png') no-repeat;
-}
+        .scrollup {
+            width: 40px;
+            height: 40px;
+            opacity: 0.3;
+            position: fixed;
+            bottom: 50px;
+            right: 100px;
+            display: none;
+            text-indent: -9999px;
+            background: url('/static/img/icon_top.png') no-repeat;
+        }
+
+        .product_name {
+            white-space: nowrap;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
 
     </style>
 </head>
 <body>
 <div class="container">
-<nav class="navbar navbar-inverse" role="navigation">
-  <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand logo" href="/"><img src="/static/img/logo.png"></a>
-  </div>
+    <nav class="navbar navbar-inverse" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand logo" href="/"><img src="/static/img/logo.png"></a>
+        </div>
 
-  <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse navbar-ex1-collapse">
-    <ul class="nav navbar-nav">
-      <li><a href="/cat/Adult_Costumes/1/">Adult Costumes</a></li>
-      <li><a href="/cat/Teen_Costumes/1/">Teen Costumes</a></li>
-      <li><a href="/cat/Kids_Costumes/1/">Kids Costumes</a></li>
-      <li><a href="/cat/Baby_Toddler_Costumes/1/">Baby Toddler Costumes</a></li>
-      <li><a href="/cat/Pet_Costumes/1/">Pet Costumes</a></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Decor Party Supplies <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li><a href="#">Separated link</a></li>
-          <li><a href="#">One more separated link</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div><!-- /.navbar-collapse -->
-</nav>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/cat/Adult_Costumes/1/">Adult Costumes</a></li>
+                <li><a href="/cat/Teen_Costumes/1/">Teen Costumes</a></li>
+                <li><a href="/cat/Kids_Costumes/1/">Kids Costumes</a></li>
+                <li><a href="/cat/Baby_Toddler_Costumes/1/">Baby Toddler Costumes</a></li>
+                <li><a href="/cat/Pet_Costumes/1/">Pet Costumes</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Decor Party Supplies <b
+                            class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </nav>
 
-<div class="row">
-    <div class="search-box">
-  <div class="col-lg-12">
-    <div class="input-group">
-      <input  type="text" class="form-control">
+    <div class="row">
+        <div class="search-box">
+            <div class="col-lg-12">
+                <div class="input-group">
+                    <input type="text" class="form-control">
       <span class="input-group-btn">
         <button class="btn btn-primary" type="button">Search</button>
       </span>
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
-  </div>
-</div><!-- /.row -->
-
-<ol class="breadcrumb">
-  <li><a href="/">Home</a></li>
-  <li class="active">{{ category }}</li>
-</ol>
-
-<div class="panel panel-info">
-<div class="panel-heading">
-    <a class="category-link" href="/cat/{{ cat_id }}/1/">{{ category }} <span class="glyphicon glyphicon-chevron-right"></span></a>
-    <ul class="pagination pull-right">
-
-    {% if products.has_previous %}
-  <li><a href="/cat/{{ cat_id }}/1/">First</a></li>
-  <li><a href="/cat/{{ cat_id }}/{{ products.previous_page_number }}/">&laquo; Prev</a></li>
-   {% else %}
-        <li class="disabled"><a href="#">First</a></li>
-         <li class="disabled"><a href="#">&laquo; Prev</a></li>
-    {% endif %}
-  <li class="active"><a href="/cat/{{ cat_id }}/{{ products.number }}/">{{ products.number }}<span class="sr-only">(current)</span></a></li>
-{% if products.has_next %}
-    <li><a href="/cat/{{ cat_id }}/{{ products.next_page_number }}/">Next &raquo;</a></li>
-     <li><a href="/cat/{{ cat_id }}/{{ products.paginator.num_pages }}/">Last</a></li>
-    {% else %}
-    <li class="disabled"><a href="#">Next &raquo;</a></li>
-    <li class="disabled"><a href="#">Last</a></li>
-{% endif %}
-
-</ul>
-</div>
-
-<div class="row product-row">
-    {% for product in products %}
-        <div class="col-sm-6 col-md-3 col-lg-3">
-        <div class="thumbnail product-thumb">
-    <a href="/id/{{ product.pk }}">
-      <img height="250px" src="{{ product.IMAGEURL }}" alt="{{ product.NAME }}" class="img-responsive">
-    </a>
-        <div class="caption">
-            <a href="/id/{{ product.pk }}">
-        <p>{{ product.NAME }}</p>
-                </a>
-         <p>${{ product.PRICE }}</p>
-      </div>
-          </div>
+                </div>
+                <!-- /input-group -->
+            </div>
+            <!-- /.col-lg-6 -->
         </div>
- {% if forloop.counter|divisibleby:4 %}
-     </div><div class="row product-row">
-        {% endif %}
-    {% endfor %}
-</div>
-<div class="row">
-<div class="col-sm-7 col-md-7 col-lg-7">
-<ul class="pagination pull-right">
+    </div>
+    <!-- /.row -->
 
-    {% if products.has_previous %}
-  <li><a href="/cat/{{ cat_id }}/1/">First</a></li>
-  <li><a href="/cat/{{ cat_id }}/{{ products.previous_page_number }}/">&laquo; Prev</a></li>
-   {% else %}
-        <li class="disabled"><a href="#">First</a></li>
-         <li class="disabled"><a href="#">&laquo; Prev</a></li>
-    {% endif %}
-  <li class="active"><a href="/cat/{{ cat_id }}/{{ products.number }}/">{{ products.number }}<span class="sr-only">(current)</span></a></li>
-{% if products.has_next %}
-    <li><a href="/cat/{{ cat_id }}/{{ products.next_page_number }}/">Next &raquo;</a></li>
-     <li><a href="/cat/{{ cat_id }}/{{ products.paginator.num_pages }}/">Last</a></li>
-    {% else %}
-    <li class="disabled"><a href="#">Next &raquo;</a></li>
-    <li class="disabled"><a href="#">Last</a></li>
-{% endif %}
+    <ol class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li class="active">{{ category }}</li>
+    </ol>
 
-</ul>
-</div>
-</div>
-</div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <a class="category-link" href="/cat/{{ cat_id }}/1/">{{ category }} <span
+                    class="glyphicon glyphicon-chevron-right"></span></a>
+            <ul class="pagination pull-right">
 
-</div></div>
+                {% if products.has_previous %}
+                    <li><a href="/cat/{{ cat_id }}/1/">First</a></li>
+                    <li><a href="/cat/{{ cat_id }}/{{ products.previous_page_number }}/">&laquo; Prev</a></li>
+                {% else %}
+                    <li class="disabled"><a href="#">First</a></li>
+                    <li class="disabled"><a href="#">&laquo; Prev</a></li>
+                {% endif %}
+                <li class="active"><a href="/cat/{{ cat_id }}/{{ products.number }}/">{{ products.number }}<span
+                        class="sr-only">(current)</span></a></li>
+                {% if products.has_next %}
+                    <li><a href="/cat/{{ cat_id }}/{{ products.next_page_number }}/">Next &raquo;</a></li>
+                    <li><a href="/cat/{{ cat_id }}/{{ products.paginator.num_pages }}/">Last</a></li>
+                {% else %}
+                    <li class="disabled"><a href="#">Next &raquo;</a></li>
+                    <li class="disabled"><a href="#">Last</a></li>
+                {% endif %}
+
+            </ul>
+        </div>
+
+        <div class="row product-row">
+            {% for product in products %}
+                <div class="col-sm-6 col-md-3 col-lg-3">
+                    <div class="thumbnail product-thumb">
+                        <a href="/id/{{ product.pk }}">
+                            <img height="250px" src="{{ product.IMAGEURL }}" alt="{{ product.NAME }}"
+                                 class="img-responsive">
+                        </a>
+
+                        <div class="caption">
+                            <a href="/id/{{ product.pk }}">
+                                <p class="product_name">{{ product.NAME }}</p>
+                            </a>
+
+                            <p>${{ product.PRICE }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:4 %}
+                    </div>
+                    <div class="row product-row">
+                {% endif %}
+            {% endfor %}
+            </div>
+        <div class="row">
+            <div class="col-sm-7 col-md-7 col-lg-7">
+                <ul class="pagination pull-right">
+
+                    {% if products.has_previous %}
+                        <li><a href="/cat/{{ cat_id }}/1/">First</a></li>
+                        <li><a href="/cat/{{ cat_id }}/{{ products.previous_page_number }}/">&laquo; Prev</a></li>
+                    {% else %}
+                        <li class="disabled"><a href="#">First</a></li>
+                        <li class="disabled"><a href="#">&laquo; Prev</a></li>
+                    {% endif %}
+                    <li class="active"><a href="/cat/{{ cat_id }}/{{ products.number }}/">{{ products.number }}<span
+                            class="sr-only">(current)</span></a></li>
+                    {% if products.has_next %}
+                        <li><a href="/cat/{{ cat_id }}/{{ products.next_page_number }}/">Next &raquo;</a></li>
+                        <li><a href="/cat/{{ cat_id }}/{{ products.paginator.num_pages }}/">Last</a></li>
+                    {% else %}
+                        <li class="disabled"><a href="#">Next &raquo;</a></li>
+                        <li class="disabled"><a href="#">Last</a></li>
+                    {% endif %}
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
 
 <a href="#" class="scrollup">Scroll</a>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="/static/js/jquery.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="/static/js/bootstrap.min.js"></script>
-<script src="/static/js/jquery.equalheights.js"></script>
 <script type="text/javascript">
-    $(document).ready(function(){
+    $(document).ready(function () {
 
-        $(window).scroll(function(){
+        $(window).scroll(function () {
             if ($(this).scrollTop() > 100) {
                 $('.scrollup').fadeIn();
             } else {
@@ -217,16 +246,11 @@
             }
         });
 
-        $('.scrollup').click(function(){
+        $('.scrollup').click(function () {
             $("html, body").animate({ scrollTop: 0 }, 600);
             return false;
         });
 
-    });
-</script>
-<script>
-$(window).load(function() {
-        $('.thumbnail').equalHeights();
     });
 </script>
 

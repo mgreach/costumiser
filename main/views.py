@@ -5,6 +5,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response
 from main.models import Product
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.shortcuts import redirect
 
 
 def index(request):
@@ -15,9 +16,23 @@ def index(request):
     pet = Product.objects.filter(ADVERTISERCATEGORY='Pet Costumes')[:4]
     accessories = Product.objects.filter(ADVERTISERCATEGORY='Costume Accessories')[:4]
     decor = Product.objects.filter(ADVERTISERCATEGORY='Decor Party Supplies')[:4]
-    result = Product.objects.all()[:100]
-    context = {'items': result, 'adult': adult, 'kids': kids, 'teen': teen, 'baby': baby, 'pet': pet, 'decor': decor,
+    for product in adult:
+        product.NAME = rotate_name(product.NAME)
+    for product in kids:
+        product.NAME = rotate_name(product.NAME)
+    for product in teen:
+        product.NAME = rotate_name(product.NAME)
+    for product in baby:
+        product.NAME = rotate_name(product.NAME)
+    for product in pet:
+        product.NAME = rotate_name(product.NAME)
+    for product in accessories:
+        product.NAME = rotate_name(product.NAME)
+    for product in decor:
+        product.NAME = rotate_name(product.NAME)
+    context = {'adult': adult, 'kids': kids, 'teen': teen, 'baby': baby, 'pet': pet, 'decor': decor,
                'accessories': accessories}
+
     return render_to_response('index.html', context, context_instance=RequestContext(request))
 
 
@@ -33,6 +48,8 @@ def category(request, cat_id, page):
         # If page is out of range (e.g. 9999), deliver last page of results.
         products = paginator.page(paginator.num_pages)
 
+    for product in products:
+        product.NAME = rotate_name(product.NAME)
     context = {'products': products, 'category': cat_id.replace('_', ' '), 'cat_id': cat_id}
     return render_to_response('category.html', context, context_instance=RequestContext(request))
 
@@ -91,5 +108,17 @@ def zero_if_empty(value):
 
 def item(request, id):
     product = Product.objects.get(pk=id)
-    context = {'product': product}
+    product.IMAGEURL = product.IMAGEURL.replace('250', '1000')
+    product.NAME = rotate_name(product.NAME)
+    context = {'product': product, 'category': product.ADVERTISERCATEGORY.replace(' ', '_')}
     return render_to_response('item.html', context, context_instance=RequestContext(request))
+
+
+def get(request, get):
+    product = Product.objects.get(pk=get)
+    return redirect(product.BUYURL)
+
+def rotate_name(name):
+    name_list = name.split()
+    name = name_list[-1] + ' ' + ' '.join(name_list[:-2])
+    return name
