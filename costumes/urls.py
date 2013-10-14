@@ -20,5 +20,6 @@ urlpatterns = patterns('',
     url('^cat/(?P<cat_id>(.*))/(?P<page>(.*))/', 'main.views.category'),
     url('^id/(?P<id>(.*))/', 'main.views.item'),
     url('^get/(?P<get>(.*))/', 'main.views.get'),
+    url('^search/(?P<keyword>(.*))/(?P<page>(.*))/', 'main.views.search'),
 
 )

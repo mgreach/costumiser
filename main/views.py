@@ -6,6 +6,7 @@ from django.shortcuts import render_to_response
 from main.models import Product
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import redirect
+from apiclient.discovery import build
 
 
 def index(request):
@@ -111,7 +112,14 @@ def item(request, id):
     product.IMAGEURL = product.IMAGEURL.replace('250', '1000')
     product.NAME = rotate_name(product.NAME)
     tags = set(product.KEYWORDS.split(','))
-    context = {'product': product, 'category': product.ADVERTISERCATEGORY.replace(' ', '_'), 'tags': tags}
+    video = youtube_search(product.NAME)
+    video_id = ''
+    video_title = ''
+    for key, value in video.iteritems():
+        video_id = key
+        video_title = value
+    context = {'product': product, 'category': product.ADVERTISERCATEGORY.replace(' ', '_'), 'tags': tags,
+               'video': video, 'video_id': video_id, 'video_title': video_title}
     return render_to_response('item.html', context, context_instance=RequestContext(request))
 
 
@@ -119,7 +127,42 @@ def get(request, get):
     product = Product.objects.get(pk=get)
     return redirect(product.BUYURL)
 
+
 def rotate_name(name):
     name_list = name.split()
     name = name_list[-1] + ' ' + ' '.join(name_list[:-2])
     return name
+
+
+def search(request, keyword, page):
+    product_list = Product.objects.filter(KEYWORDS__contains=keyword)
+    paginator = Paginator(product_list, 24)
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        products = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        products = paginator.page(paginator.num_pages)
+
+    for product in products:
+        product.NAME = rotate_name(product.NAME)
+    context = {'products': products, 'keyword': keyword}
+    return render_to_response('search.html', context, context_instance=RequestContext(request))
+
+
+def youtube_search(options):
+    DEVELOPER_KEY = "AIzaSyAMZRBj-tYj9B2TJrKavVBGr3gcM5z0bow"
+    YOUTUBE_API_SERVICE_NAME = "youtube"
+    YOUTUBE_API_VERSION = "v3"
+    youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVELOPER_KEY)
+
+    search_response = youtube.search().list(q=options, part="id,snippet", maxResults=1).execute()
+
+    videos = {}
+
+    for search_result in search_response.get("items", []):
+        if search_result["id"]["kind"] == "youtube#video":
+            videos[search_result["id"]["videoId"]] = search_result["snippet"]["title"]
+    return videos

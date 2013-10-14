@@ -56,6 +56,17 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+        .scrollup {
+            width: 40px;
+            height: 40px;
+            opacity: 0.3;
+            position: fixed;
+            bottom: 50px;
+            right: 100px;
+            display: none;
+            text-indent: -9999px;
+            background: url('/static/img/icon_top.png') no-repeat;
+        }
     </style>
 </head>
 <body>
@@ -253,13 +264,43 @@
 
 
 </div></div>
+<a href="#" class="scrollup">Scroll</a>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="/static/js/jquery.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="/static/js/bootstrap.min.js"></script>
-<script src="/static/js/jquery.ui.totop.js"></script>
-<script>
+<script type="text/javascript">
+    $(document).ready(function () {
 
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 100) {
+                $('.scrollup').fadeIn();
+            } else {
+                $('.scrollup').fadeOut();
+            }
+        });
+
+        $('.scrollup').click(function () {
+            $("html, body").animate({ scrollTop: 0 }, 600);
+            return false;
+        });
+
+    });
 </script>
+<!-- AddThis Smart Layers BEGIN -->
+<!-- Go to http://www.addthis.com/get/smart-layers to customize -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-525b14e91bafe752"></script>
+<script type="text/javascript">
+  addthis.layers({
+    'theme' : 'transparent',
+    'share' : {
+      'position' : 'left',
+      'numPreferredServices' : 5
+    },
+    'whatsnext' : {},
+    'recommended' : {}
+  });
+</script>
+<!-- AddThis Smart Layers END -->
 </body>
 </html>
