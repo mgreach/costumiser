@@ -185,23 +185,36 @@
                 </div>
             </div>
         </div>
-    <div class="row product-row">
-        <div class="col-sm-12 col-md-6 col-lg-6">
-        <div class="fb-comments" data-href="http://partyspec.com" data-colorscheme="The color scheme used in the plugin" data-numposts="5" data-width="The pixel width of the plugin"></div>
+        <div class="row product-row">
+            <div class="col-sm-12 col-md-6 col-lg-6">
+                <div class="fb-comments" data-href="http://partyspec.com"
+                     data-colorscheme="The color scheme used in the plugin" data-numposts="5"
+                     data-width="The pixel width of the plugin"></div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6" id="video-box">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h4 class="panel-title"><a class="accordion-toggle"
+                                                                          data-toggle="collapse"
+                                                                          data-parent="#accordion" href="#collapseOne"> <span
+                            id="icon-play" class="glyphicon glyphicon-play"></span> Watch video
+                        for {{ product.NAME }}</a></h4></div>
+                    <div id="collapseOne" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div id='playerZurEpZpLCxPA'></div>
+                        </div>
+                    </div>
+                    <script type='text/javascript'>
+                        jwplayer('playerZurEpZpLCxPA').setup({
+                            file: 'https://www.youtube.com/watch?v={{ video_id }}',
+                            title: '{{ video_title }}',
+                            width: '100%',
+                            aspectratio: '16:9',
+                            fallback: 'false'
+                        });
+                    </script>
+                </div>
+            </div>
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-6" id="video-box">
-            <div id='playerZurEpZpLCxPA'></div>
-<script type='text/javascript'>
-    jwplayer('playerZurEpZpLCxPA').setup({
-        file: 'https://www.youtube.com/watch?v={{ video_id }}',
-        title: '{{ video_title }}',
-        width: '100%',
-        aspectratio: '16:9',
-        fallback: 'false'
-    });
-</script>
-        </div>
-    </div>
     </div>
 
 
@@ -220,10 +233,10 @@
 </script>
 <script src="/static/js/jquery.fitvids.js"></script>
 <script>
-  $(document).ready(function(){
-    // Добавьте класс своего div контейнера тут
-    $("#video-box").fitVids();
-  });
+    $(document).ready(function () {
+        // Добавьте класс своего div контейнера тут
+        $("#video-box").fitVids();
+    });
 </script>
 <!-- AddThis Smart Layers BEGIN -->
 <!-- Go to http://www.addthis.com/get/smart-layers to customize -->
@@ -237,6 +250,16 @@
         },
         'whatsnext': {},
         'recommended': {}
+    });
+$(document).ready(function () {
+    $('#collapseOne').on('show.bs.collapse', function () {
+        $('#play-icon').removeClass('glyphicon-play').addClass('glyphicon-stop');
+        //$('#play-icon').addClass('glyphicon-stop');
+    });
+    $('#collapseOne').on('hidden.bs.collapse', function () {
+        $('#play-icon').removeClass('glyphicon-stop').addClass('glyphicon-play');
+        //$('#play-icon').addClass('glyphicon-stop');
+    });
     });
 </script>
 <!-- AddThis Smart Layers END -->
