@@ -111,16 +111,23 @@ def zero_if_empty(value):
 
 def item(request, id):
     product = Product.objects.get(pk=id)
-    product.IMAGEURL = product.IMAGEURL.replace('250', '1000')
-    product.NAME = rotate_name(product.NAME)
     tags = set(product.KEYWORDS.split(','))
-    video = youtube_search(product.NAME)
+    video = {}
     video_id = ''
     video_title = ''
-    for key, value in video.iteritems():
-        video_id = key
-        video_title = value
-
+    if product.WARRANTY == '':
+        video = youtube_search(product.NAME)
+        for key, value in video.iteritems():
+            video_id = key
+            video_title = value
+        product.ONLINE = video_title
+        product.WARRANTY = video_id
+        product.save()
+    else:
+        video_id = product.WARRANTY
+        video_title = product.ONLINE
+    product.NAME = rotate_name(product.NAME)
+    product.IMAGEURL = product.IMAGEURL.replace('250', '1000')
     title = product.NAME + ' Price, Reviews and Video - Party Spec'
     c_url = request.build_absolute_uri
     context = {'product': product, 'category': product.ADVERTISERCATEGORY.replace(' ', '_'), 'tags': tags,
