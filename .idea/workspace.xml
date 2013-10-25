@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="03183049-511f-4378-8270-8f9aa58ec24c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/item.html" afterPath="$PROJECT_DIR$/templates/item.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/views.py" afterPath="$PROJECT_DIR$/main/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="costumes.iws" />
@@ -56,7 +57,7 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="155" column="96" selection-start="6930" selection-end="6930" vertical-scroll-proportion="0.0" vertical-offset="2200" max-vertical-offset="3078">
+            <state line="126" column="111" selection-start="6004" selection-end="6004" vertical-scroll-proportion="0.0" vertical-offset="1714" max-vertical-offset="3096">
               <folding />
             </state>
           </provider>
@@ -83,7 +84,7 @@
       <file leaf-file-name="item.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/item.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="190" column="100" selection-start="7317" selection-end="7317" vertical-scroll-proportion="-0.34430084" vertical-offset="3713" max-vertical-offset="4950">
+            <state line="83" column="25" selection-start="2079" selection-end="2079" vertical-scroll-proportion="0.23854288" vertical-offset="1291" max-vertical-offset="4950">
               <folding />
             </state>
           </provider>
@@ -496,7 +497,11 @@
       <created>1382673413093</created>
       <updated>1382673413093</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="item page">
+      <created>1382674630629</created>
+      <updated>1382674630629</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -657,14 +662,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="155" column="96" selection-start="6930" selection-end="6930" vertical-scroll-proportion="0.0" vertical-offset="2200" max-vertical-offset="3078">
+        <state line="126" column="111" selection-start="6004" selection-end="6004" vertical-scroll-proportion="0.0" vertical-offset="1714" max-vertical-offset="3096">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/item.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="190" column="100" selection-start="7317" selection-end="7317" vertical-scroll-proportion="-0.34430084" vertical-offset="3713" max-vertical-offset="4950">
+        <state line="83" column="25" selection-start="2079" selection-end="2079" vertical-scroll-proportion="0.23854288" vertical-offset="1291" max-vertical-offset="4950">
           <folding />
         </state>
       </provider>

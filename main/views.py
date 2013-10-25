@@ -122,8 +122,9 @@ def item(request, id):
         video_title = value
 
     title = product.NAME + ' Price, Reviews and Video - Party Spec'
+    c_url = request.build_absolute_uri
     context = {'product': product, 'category': product.ADVERTISERCATEGORY.replace(' ', '_'), 'tags': tags,
-               'video': video, 'video_id': video_id, 'video_title': video_title, 'title': title}
+               'video': video, 'video_id': video_id, 'video_title': video_title, 'title': title, 'c_url': c_url}
     return render_to_response('item.html', context, context_instance=RequestContext(request))
 
 
