@@ -120,12 +120,12 @@ def item(request, id):
         for key, value in video.iteritems():
             video_id = key
             video_title = value
-        product.ONLINE = video_title
+        product.LABEL = video_title
         product.WARRANTY = video_id
         product.save()
     else:
         video_id = product.WARRANTY
-        video_title = product.ONLINE
+        video_title = product.LABEL
     product.NAME = rotate_name(product.NAME)
     product.IMAGEURL = product.IMAGEURL.replace('250', '1000')
     title = product.NAME + ' Price, Reviews and Video - Party Spec'
