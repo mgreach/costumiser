@@ -32,7 +32,8 @@ def index(request):
     for product in decor:
         product.NAME = rotate_name(product.NAME)
     context = {'adult': adult, 'kids': kids, 'teen': teen, 'baby': baby, 'pet': pet, 'decor': decor,
-               'accessories': accessories}
+               'accessories': accessories,
+               'title': 'Halloween costumes, accessories and party props for adults, kids, teens, toddlers, pets - Party Spec'}
 
     return render_to_response('index.html', context, context_instance=RequestContext(request))
 
@@ -51,7 +52,8 @@ def category(request, cat_id, page):
 
     for product in products:
         product.NAME = rotate_name(product.NAME)
-    context = {'products': products, 'category': cat_id.replace('_', ' '), 'cat_id': cat_id}
+    title = cat_id.replace('_', ' ') + ' Category ' + page + ' - Party Spec'
+    context = {'products': products, 'category': cat_id.replace('_', ' '), 'cat_id': cat_id, 'title': title}
     return render_to_response('category.html', context, context_instance=RequestContext(request))
 
 
@@ -118,8 +120,10 @@ def item(request, id):
     for key, value in video.iteritems():
         video_id = key
         video_title = value
+
+    title = product.NAME + ' Price, Reviews and Video - Party Spec'
     context = {'product': product, 'category': product.ADVERTISERCATEGORY.replace(' ', '_'), 'tags': tags,
-               'video': video, 'video_id': video_id, 'video_title': video_title}
+               'video': video, 'video_id': video_id, 'video_title': video_title, 'title': title}
     return render_to_response('item.html', context, context_instance=RequestContext(request))
 
 
@@ -148,7 +152,9 @@ def search(request, keyword, page):
 
     for product in products:
         product.NAME = rotate_name(product.NAME)
-    context = {'products': products, 'keyword': keyword}
+
+    title = keyword + ' on Party Spec - Page ' + str(page) + ' from ' + str(paginator.num_pages) + ' pages'
+    context = {'products': products, 'keyword': keyword, 'title': title}
     return render_to_response('search.html', context, context_instance=RequestContext(request))
 
 
