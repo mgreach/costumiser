@@ -7,6 +7,7 @@ from main.models import Product
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import redirect
 from apiclient.discovery import build
+from django.db.models import Q
 
 
 def index(request):
@@ -148,7 +149,7 @@ def item(request, id):
     c_url = request.build_absolute_uri
     context = {'product': product, 'category': product.ADVERTISERCATEGORY.replace(' ', '_'), 'tags': tags,
                'video': video, 'video_id': video_id, 'video_title': video_title, 'title': title, 'c_url': c_url,
-               'subcategory': product.SUBCATEGORY.replace(' ', '_')}
+               'subcategory': clean_sub(product.SUBCATEGORY).replace(' ', '_')}
     return render_to_response('item.html', context, context_instance=RequestContext(request))
 
 
@@ -201,7 +202,7 @@ def youtube_search(options):
 
 def sub_category(request, cat_id, sub_id, page):
     product_list = Product.objects.filter(ADVERTISERCATEGORY=cat_id.replace('_', ' ')).filter(
-        SUBCATEGORY=sub_id.replace('_', ' '))
+        Q(SUBCATEGORY=sub_id.replace('_', ' ')) | Q(SUBCATEGORY=' ' + sub_id.replace('_', ' ')))
     paginator = Paginator(product_list, 24)
     try:
         products = paginator.page(page)
@@ -216,5 +217,11 @@ def sub_category(request, cat_id, sub_id, page):
         product.NAME = rotate_name(product.NAME)
     title = sub_id.replace('_', ' ') + ' - ' + cat_id.replace('_', ' ') + ' Category ' + page + ' - Party Spec'
     context = {'products': products, 'category': cat_id.replace('_', ' '), 'cat_id': cat_id, 'title': title,
-               'sub_id': sub_id, 'subcategory': sub_id.replace('_', ' ')}
+               'sub_id': sub_id, 'subcategory': clean_sub(sub_id).replace('_', ' ')}
     return render_to_response('sub_category.html', context, context_instance=RequestContext(request))
+
+
+def clean_sub(sub_id):
+    if sub_id[0] == ' ':
+        return sub_id.replace(' ', '', 1)
+    return sub_id
