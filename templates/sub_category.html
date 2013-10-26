@@ -89,9 +89,6 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
-        .desc{
-            color: #b2b2b2;
-        }
 
     </style>
 </head>
@@ -260,7 +257,7 @@
         <div class="search-box">
             <div class="col-lg-12">
                 <div class="input-group">
-                    <input type="text" value="{{ keyword }}" class="form-control" id="search_bar">
+                    <input type="text" class="form-control" id="search_bar">
       <span class="input-group-btn">
         <button id="search" class="btn btn-primary" type="button">Search</button>
       </span>
@@ -274,32 +271,32 @@
 
     <ol class="breadcrumb">
         <li><a href="/">Home</a></li>
-        <li class="active">{{ keyword }}</li>
+        <li><a href="/cat/{{ cat_id }}/1/">{{ category }}</a></li>
+        <li class="active">{{ subcategory }}</li>
     </ol>
 
     <div class="panel panel-info">
         <div class="panel-heading">
-            Search result for: <a class="category-link" href="/search/{{ keyword }}/1/"><span
-                    class="glyphicon glyphicon-chevron-left"></span>{{ keyword }}<span
+            <a class="category-link" href="/s/{{ cat_id }}/{{ sub_id }}/1/">{{ category }} - {{ subcategory }} <span
                     class="glyphicon glyphicon-chevron-right"></span></a>
             <ul class="pagination pull-right">
 
                 {% if products.has_previous %}
-                        <li><a href="/search/{{ keyword }}/1/">First</a></li>
-                        <li><a href="/search/{{ keyword }}/{{ products.previous_page_number }}/">&laquo; Prev</a></li>
-                    {% else %}
-                        <li class="disabled"><a href="#">First</a></li>
-                        <li class="disabled"><a href="#">&laquo; Prev</a></li>
-                    {% endif %}
-                    <li class="active"><a href="/search/{{ keyword }}/{{ products.number }}/">{{ products.number }}<span
-                            class="sr-only">(current)</span></a></li>
-                    {% if products.has_next %}
-                        <li><a href="/search/{{ keyword }}/{{ products.next_page_number }}/">Next &raquo;</a></li>
-                        <li><a href="/search/{{ keyword }}/{{ products.paginator.num_pages }}/">Last</a></li>
-                    {% else %}
-                        <li class="disabled"><a href="#">Next &raquo;</a></li>
-                        <li class="disabled"><a href="#">Last</a></li>
-                    {% endif %}
+                    <li><a href="/s/{{ cat_id }}/{{ sub_id }}/1/">First</a></li>
+                    <li><a href="/s/{{ cat_id }}/{{ sub_id }}/{{ products.previous_page_number }}/">&laquo; Prev</a></li>
+                {% else %}
+                    <li class="disabled"><a href="#">First</a></li>
+                    <li class="disabled"><a href="#">&laquo; Prev</a></li>
+                {% endif %}
+                <li class="active"><a href="/s/{{ cat_id }}/{{ sub_id }}/{{ products.number }}/">{{ products.number }}<span
+                        class="sr-only">(current)</span></a></li>
+                {% if products.has_next %}
+                    <li><a href="/s/{{ cat_id }}/{{ sub_id }}/{{ products.next_page_number }}/">Next &raquo;</a></li>
+                    <li><a href="/s/{{ cat_id }}/{{ sub_id }}/{{ products.paginator.num_pages }}/">Last</a></li>
+                {% else %}
+                    <li class="disabled"><a href="#">Next &raquo;</a></li>
+                    <li class="disabled"><a href="#">Last</a></li>
+                {% endif %}
 
             </ul>
         </div>
@@ -333,17 +330,17 @@
                 <ul class="pagination pull-right">
 
                     {% if products.has_previous %}
-                        <li><a href="/search/{{ keyword }}/1/">First</a></li>
-                        <li><a href="/search/{{ keyword }}/{{ products.previous_page_number }}/">&laquo; Prev</a></li>
+                        <li><a href="/s/{{ cat_id }}/{{ sub_id }}/1/">First</a></li>
+                        <li><a href="/s/{{ cat_id }}/{{ sub_id }}/{{ products.previous_page_number }}/">&laquo; Prev</a></li>
                     {% else %}
                         <li class="disabled"><a href="#">First</a></li>
                         <li class="disabled"><a href="#">&laquo; Prev</a></li>
                     {% endif %}
-                    <li class="active"><a href="/search/{{ keyword }}/{{ products.number }}/">{{ products.number }}<span
+                    <li class="active"><a href="/s/{{ cat_id }}/{{ sub_id }}/{{ products.number }}/">{{ products.number }}<span
                             class="sr-only">(current)</span></a></li>
                     {% if products.has_next %}
-                        <li><a href="/search/{{ keyword }}/{{ products.next_page_number }}/">Next &raquo;</a></li>
-                        <li><a href="/search/{{ keyword }}/{{ products.paginator.num_pages }}/">Last</a></li>
+                        <li><a href="/s/{{ cat_id }}/{{ sub_id }}/{{ products.next_page_number }}/">Next &raquo;</a></li>
+                        <li><a href="/s/{{ cat_id }}/{{ sub_id }}/{{ products.paginator.num_pages }}/">Last</a></li>
                     {% else %}
                         <li class="disabled"><a href="#">Next &raquo;</a></li>
                         <li class="disabled"><a href="#">Last</a></li>
@@ -352,11 +349,6 @@
                 </ul>
             </div>
         </div>
-    <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-12 desc">
-        Total {{ products.paginator.count }} results for {{ keyword }} from 1 shop from whom you can buy cheap {{ keyword }} in US.
-        Order {{ keyword }} at the best price on Party Spec.</div>
-    </div>
     </div>
 
 </div>

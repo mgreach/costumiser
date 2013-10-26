@@ -100,6 +100,22 @@ def import_req(request):
         file_catalog.close()
         context['rows'] = rows
 
+    adult = Product.objects.filter(ADVERTISERCATEGORY='Adult Costumes').distinct('SUBCATEGORY')
+    kids = Product.objects.filter(ADVERTISERCATEGORY='Kids Costumes').distinct('SUBCATEGORY')
+    teen = Product.objects.filter(ADVERTISERCATEGORY='Teen Costumes').distinct('SUBCATEGORY')
+    baby = Product.objects.filter(ADVERTISERCATEGORY='Baby Toddler Costumes').distinct('SUBCATEGORY')
+    pet = Product.objects.filter(ADVERTISERCATEGORY='Pet Costumes').distinct('SUBCATEGORY')
+    accessories = Product.objects.filter(ADVERTISERCATEGORY='Costume Accessories').distinct('SUBCATEGORY')
+    decor = Product.objects.filter(ADVERTISERCATEGORY='Decor Party Supplies').distinct('SUBCATEGORY')
+
+    context['adult'] = adult
+    context['kids'] = kids
+    context['teen'] = teen
+    context['baby'] = baby
+    context['pet'] = pet
+    context['accessories'] = accessories
+    context['decor'] = decor
+
     return render_to_response('import.html', context, context_instance=RequestContext(request))
 
 
@@ -131,7 +147,8 @@ def item(request, id):
     title = product.NAME + ' Price, Reviews and Video - Party Spec'
     c_url = request.build_absolute_uri
     context = {'product': product, 'category': product.ADVERTISERCATEGORY.replace(' ', '_'), 'tags': tags,
-               'video': video, 'video_id': video_id, 'video_title': video_title, 'title': title, 'c_url': c_url}
+               'video': video, 'video_id': video_id, 'video_title': video_title, 'title': title, 'c_url': c_url,
+               'subcategory': product.SUBCATEGORY.replace(' ', '_')}
     return render_to_response('item.html', context, context_instance=RequestContext(request))
 
 
@@ -180,3 +197,24 @@ def youtube_search(options):
         if search_result["id"]["kind"] == "youtube#video":
             videos[search_result["id"]["videoId"]] = search_result["snippet"]["title"]
     return videos
+
+
+def sub_category(request, cat_id, sub_id, page):
+    product_list = Product.objects.filter(ADVERTISERCATEGORY=cat_id.replace('_', ' ')).filter(
+        SUBCATEGORY=sub_id.replace('_', ' '))
+    paginator = Paginator(product_list, 24)
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        products = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        products = paginator.page(paginator.num_pages)
+
+    for product in products:
+        product.NAME = rotate_name(product.NAME)
+    title = sub_id.replace('_', ' ') + ' - ' + cat_id.replace('_', ' ') + ' Category ' + page + ' - Party Spec'
+    context = {'products': products, 'category': cat_id.replace('_', ' '), 'cat_id': cat_id, 'title': title,
+               'sub_id': sub_id, 'subcategory': sub_id.replace('_', ' ')}
+    return render_to_response('sub_category.html', context, context_instance=RequestContext(request))
