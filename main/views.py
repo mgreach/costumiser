@@ -222,6 +222,7 @@ def sub_category(request, cat_id, sub_id, page):
 
 
 def clean_sub(sub_id):
-    if sub_id[0] == ' ':
-        return sub_id.replace(' ', '', 1)
+    if sub_id != '':
+        if sub_id[0] == ' ':
+            return sub_id.replace(' ', '', 1)
     return sub_id
