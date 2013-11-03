@@ -22,5 +22,6 @@ urlpatterns = patterns('',
     url('^get/(?P<get>(.*))/', 'main.views.get'),
     url('^search/(?P<keyword>(.*))/(?P<page>(.*))/', 'main.views.search'),
     url('^s/(?P<cat_id>(.*))/(?P<sub_id>(.*))/(?P<page>(.*))/', 'main.views.sub_category'),
+    url(r'^stats/', include('stats.urls')),
 
 )
